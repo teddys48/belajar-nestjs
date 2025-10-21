@@ -1,5 +1,10 @@
 import { Module } from '@nestjs/common';
+import { configDotenv } from 'dotenv';
 import knex, { Knex } from 'knex';
+
+configDotenv();
+
+const { DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD } = process.env;
 
 const knexProvider = {
   provide: 'KnexConnection',
@@ -7,11 +12,11 @@ const knexProvider = {
     return knex({
       client: 'pg',
       connection: {
-        host: 'localhost',
-        port: 5432,
-        database: 'laravel-crud',
-        user: 'postgres',
-        password: 'galau712',
+        host: DB_HOST,
+        port: Number(DB_PORT),
+        database: DB_NAME,
+        user: DB_USER,
+        password: String(DB_PASSWORD),
       },
     });
   },

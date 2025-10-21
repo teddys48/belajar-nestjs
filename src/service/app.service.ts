@@ -1,5 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { BuildResponse } from './app.dto';
+import { BuildResponse } from 'src/dto/app.dto';
 
 @Injectable()
 export class AppService {
