@@ -18,8 +18,6 @@ export class LoggerMiddleware implements NestMiddleware {
       return oldSend.call(this, body);
     };
 
-    // console.log(req);
-
     let reqBody = req.body
       ? req.body
       : Object.keys(req.params).length !== 0
