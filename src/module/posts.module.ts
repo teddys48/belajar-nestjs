@@ -3,7 +3,7 @@ import { PostsController } from '../controller/posts.controller';
 import { DatabaseModule } from 'src/config/database.module';
 import { PostsService } from 'src/service/posts.service';
 import { PostsRepository } from 'src/repository/posts.repository';
-import { LoggerMiddleware } from 'src/middleware/log-middleware';
+import { LoggerMiddleware } from 'src/middleware/log.middleware';
 
 @Module({
   imports: [DatabaseModule],
