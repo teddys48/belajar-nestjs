@@ -8,4 +8,8 @@ export class AuthRepository {
   async find(email: any) {
     return await this.knex.table('users').where('email', email).first();
   }
+
+  async register(data: any) {
+    return await this.knex.table('users').insert(data);
+  }
 }

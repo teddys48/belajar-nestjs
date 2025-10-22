@@ -29,7 +29,10 @@ export class PostsService {
     try {
       let res = await this.postsRepository.find(id);
       if (!res) {
-        return new BuildResponse('400', 'data not found', {});
+        return new HttpException(
+          new BuildResponse('400', 'data not found', {}),
+          HttpStatus.BAD_REQUEST,
+        );
       }
       return new BuildResponse('00', 'message', res);
     } catch (error) {

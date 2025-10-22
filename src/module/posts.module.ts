@@ -4,6 +4,7 @@ import { DatabaseModule } from 'src/config/database.module';
 import { PostsService } from 'src/service/posts.service';
 import { PostsRepository } from 'src/repository/posts.repository';
 import { LoggerMiddleware } from 'src/middleware/log.middleware';
+import { JWTMiddleware } from 'src/middleware/jwt.middleware';
 
 @Module({
   imports: [DatabaseModule],
@@ -12,6 +13,6 @@ import { LoggerMiddleware } from 'src/middleware/log.middleware';
 })
 export class PostsModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(LoggerMiddleware).forRoutes('/api/post');
+    consumer.apply(LoggerMiddleware, JWTMiddleware).forRoutes('/api/post');
   }
 }
